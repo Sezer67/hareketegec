@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+}
+
+/* NAVBAR */
+.NavbarDiv {
+    width:100%;
+    height: 80px;
+    background-color: rgb(97, 97, 201);
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.NavbarList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.NavbarIcon {
+    font-size:20px;
+    align-items: center;
+    padding-top: 25px;
+    padding-left: 20px;
+}
+.NavbarIcon button {
+    border: none;
+    background-color:  rgb(97, 97, 201);
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
+
+.NavbarListButton {
+    align-items: center;
+    margin: 40px;
+    border: none;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+}
+
+.NavbarSign {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding-right: 75px;
+}
+
+.NavbarLog {
+    align-items: center;
+    padding-right: 20px;
+    border: none;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+}
+/* ************************************** */
+
+/* Giriş yap SIGN IN */
+
+.SignInDiv {
+    width: 100%;
+    height: 81vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    justify-content: center;
+    background-image: url("https://images.unsplash.com/photo-1556711240-9d578614d08e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+    
+}
+
+.SignInForm {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+   
+}
+
+.SignInButton {
+    align-items: center;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 200px;
+}
+
+.SignInOutButton{
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 200px;
+}
+
+/* ********************************* */
+/* Kayıt ol SIGN UP */
+
+
+.SignUpDiv {
+    width: 100%;
+    height: 81vh;
+    background-image: url("https://images.unsplash.com/photo-1525706732602-52592370085e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+    background-size: 100%;
+    display: flex;
+    justify-content: center; 
+}
+
+.SignUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.SignUpButton{
+    align-items: center;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 200px;
+}
+
+
+
+
+
+
+
+
+
