@@ -10,65 +10,107 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-//import Link  from "@mui/material/Link";
-import {Link}  from "react-router-dom";
+
+import { useEffect,useState } from 'react';
+import { axiosInstance } from "./login.axios.util";
+import SporCard from './SporCard';
+
+
 
 
 const tiers = [
   {
-        title: 'Spor Programı 1',
+        id:1,
+        title: 'Hacim Kazanma',
         description: [
-            'Yağ Oranı %0-6 arası'
+            'Kas kütlesi ve vücut ağırlığı kazanmak isteyenler için '
         ],
-        buttonText: 'Tıkla',
+        buttonText: 'Göster',
+        
         buttonVariant: 'outlined',
     },
   {
-    title: 'Spor Programı 2',
+    id:2,
+    title: 'Yağ Yakma ',
     description: [
-        'Yağ Oranı %6-13 arası'
+        'Yağ oranı yüksek ve define olamak için'
     ],
-    buttonText: 'Tıkla',
+    buttonText: 'Göster',
+    
     buttonVariant: 'outlined',
   },
   {
-    title: 'Spor Programı 3',
+    id:3,
+    title: 'Performans Güç',
     description: [
-        'Yağ Oranı %14-17 arası'
+        'Spor geçmişi olan ve aktif sporcular için'
     ],
-    buttonText: 'Tıkla',
+    buttonText: 'Göster',
+    
     buttonVariant: 'outlined',
   },
   {
-    title: 'Spor Programı 4',
+    id:4,
+    title: 'Fit Olma',
     description: [
-        'Yağ Oranı %18-24 arası'
+        'Vücut kütlesini ve yağ oranını düşürmek için'
     ],
-    buttonText: 'Tıkla',
+    buttonText: 'Göster',
+    
     buttonVariant: 'outlined',
   },
   {
-    title: 'Spor Programı 5',
+    id:5,
+    title: 'Sağlıklı Yaşam',
     description: [
-        'Yağ Oranı %25-37 arası'
+        'Vücut kütlesi ve yağ oranı kütle indeksine göre koruma'
     ],
-    buttonText: 'Tıkla',
+    buttonText: 'Göster',
+    
     buttonVariant: 'outlined',
   },
   {
-    title: 'Spor Programı 6',
+    id:6,
+    title: 'Eklem Sağlığı',
     description: [
-        'Yağ Oranı %38 ve üstü arası'
+        'Yüksek yaş sahibi ve eklem rahatsızlığı olanlar için'
     ],
-    buttonText: 'Tıkla',
+    buttonText: 'Göster',
+   
     buttonVariant: 'outlined',
   },
  
 ];
 
-
+  
 
 function PricingContent() {
+  const [sporList,setSporList] = useState([]); // tüm kartlaraın listesini tutmak için
+  const [selected, setSelected] = useState(); // sadece seçili olan kartı tutmak için
+  const [visible, setVisible] = useState(false); // modalın görünülebilirliği
+
+  const getSporList = async () => {
+    try {
+        const {data} = await axiosInstance.get(`/spor-list`);
+        setSporList(data); 
+    } catch (error) {
+        console.log("error",error);
+    }
+  }
+
+  useEffect(() => {
+    getSporList();
+  },[])
+
+  const handleClick= (id) => {
+    const selectedSpor = sporList.filter((spor) => spor.id === id)[0];
+    setSelected(selectedSpor);
+    setVisible(true);
+  }
+
+
+
+
   return (
     <React.Fragment>
       <div style={{backgroundImage:`url("https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover',
@@ -95,7 +137,7 @@ function PricingContent() {
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+          {sporList.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
               item
@@ -135,23 +177,18 @@ function PricingContent() {
                     </Typography>
                   </Box>
                   <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
+                    {tier.cardDescription || tier.description}
                   </ul>
                 </CardContent>
+                
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
-                  <Link to='/Signin' style={{textDecoration:'none', color:'skyblue'}}> {tier.buttonText}</Link>
-                   
-                  </Button>
+                  <Button onClick={() => handleClick(tier.id)} fullWidth variant="outlined">
+                    
+                  <span  style={{textDecoration:'none', color:'skyblue'}}>GÖRÜNTÜLE</span>
+                   </Button>
+
+
+                  
                 </CardActions>
               </Card>
             </Grid>
@@ -175,6 +212,9 @@ function PricingContent() {
       </Container>
       {/* End footer */}
       </div>
+      {
+        visible && <SporCard visible={visible} setVisible={setVisible} spor={selected} />
+      }
     </React.Fragment>
   );
 }

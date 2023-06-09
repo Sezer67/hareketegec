@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from './Navbar';
 import Iletisim from "./Iletisim";
-
 import ParolaSifirlama from "./ParolaSifirlama";
 import Spor from './Spor';
 import Diyet from './Diyet';
@@ -13,11 +12,19 @@ import SignUp from './SignUp';
 import SignIn from "./SignIn";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import * as storage from './storage.helper'
-import { axiosInstance, setApiToken } from './axios.util';
+import { axiosInstance, setApiToken } from './login.axios.util';
 import { userActions } from './redux/slice/userslice';
-import Emailverified from "./Emailverified";
 import EmailVerify from "./EmailVerify";
+import EmailVerifyInfo from "./EmailVerifyInfo";
+import SporCard from "./SporCard";
+import SporCardState from "./SporCardState";
+import DiyetCard from "./DiyetCard";
+import DiyetCardState from "./DiyetCardState";
+import Deneme from "./Deneme";
+import Test from "./Test";
+import Test2 from "./Test2";
 import "./App.css";
+
 function App() {
   const dispatch = useDispatch();
   const userState = useSelector((state) => state.user);
@@ -54,8 +61,15 @@ function App() {
         <Route exact path="/Spor" component={Spor} /> 
         <Route exact path="/Diyet" component={Diyet} /> 
         <Route exact path="/Blog" component={Blog} /> 
-        <Route exact path="/Emailverified " component={Emailverified} /> 
-        <Route exact path="/EmailVerify " component={EmailVerify} />
+        <Route exact path="/EmailVerify" component={EmailVerify}/>
+        <Route exact path="/EmailVerifyInfo" component={EmailVerifyInfo}/>
+        <Route exact path="/SporCard" component={SporCard}/>
+        <Route exact path="/SporCardState" component={SporCardState}/>
+        <Route exact path="/DiyetCard" component={DiyetCard}/>
+        <Route exact path="/DiyetCardState" component={DiyetCardState}/>
+        <Route exact path="/Deneme" component={Deneme}/>
+        <Route exact path="/Test" component={Test}/>
+        <Route exact path="/Test2" component={Test2}/>
       </Switch>
       
     </BrowserRouter>

@@ -33,4 +33,4 @@ const setApiToken = (token) => {
   axiosInstance.defaults.headers.common["token"] = token;
 };
 
-export { axiosInstance, setApiToken };
+export {  axiosInstance, setApiToken };

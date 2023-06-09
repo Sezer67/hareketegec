@@ -10,11 +10,13 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
-import { Link } from 'react-router-dom';
-
+import { useEffect,useState } from 'react';
+import { axiosInstance } from './login.axios.util';
+import DiyetCard from './DiyetCard';
 
 const tiers = [
   {
+        id:1,
         title: 'Diyet 1',
         description: [
             'Yağ Oranı %0-6 arası'
@@ -23,6 +25,7 @@ const tiers = [
         buttonVariant: 'outlined',
     },
   {
+    id:2,
     title: 'Diyet 2',
     description: [
         'Yağ Oranı %6-13 arası'
@@ -31,6 +34,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
+    id:3,
     title: 'Diyet 3',
     description: [
         'Yağ Oranı %14-17 arası'
@@ -39,6 +43,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
+    id:4,
     title: 'Diyet 4',
     description: [
         'Yağ Oranı %18-24 arası'
@@ -47,6 +52,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
+    id:5,
     title: 'Diyet 5',
     description: [
         'Yağ Oranı %25-37 arası'
@@ -55,6 +61,7 @@ const tiers = [
     buttonVariant: 'outlined',
   },
   {
+    id:6,
     title: 'Diyet 6',
     description: [
         'Yağ Oranı %38 ve üstü arası'
@@ -68,6 +75,30 @@ const tiers = [
 
 
 function PricingContent() {
+
+  const [diyetList,setDiyetList]=useState([]);//Tüm Kartların listesini tutmak için
+  const [selected ,setSelected]=React.useState();//Seçili kartı tutmak için
+  const [visible,setVisible]=useState(false);//modalın görünebilirliği
+
+  const getDiyetList = async()=>{
+    try {
+      const {data} = await axiosInstance.get(`/diet-list`);
+      setDiyetList(data);
+    } catch (error) {
+      console.log("error",error);
+    }
+  }
+
+  useEffect(()=>{
+    getDiyetList();
+  },[])
+
+  const handleClick= (id) => {
+    const selectedDiyet = diyetList.filter((diyet) => diyet.id === id)[0];
+    setSelected(selectedDiyet);
+    setVisible(true);
+  }
+
   return (
     <React.Fragment>
       <div style={{backgroundImage:`url("https://images.unsplash.com/photo-1604480132715-bd70038b74df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=918&q=80")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover', backgroundPosition: 'center'}}>
@@ -93,7 +124,7 @@ function PricingContent() {
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {tiers.map((tier) => (
+          {diyetList.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
               item
@@ -133,22 +164,13 @@ function PricingContent() {
                     </Typography>
                   </Box>
                   <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
-                      >
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
+                  {tier.cardDescription || tier.description}
+                    </ul>                            
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
+                  <Button onClick={() => handleClick(tier.id)} fullWidth variant="outlined">
                     
-                  <Link to='/Signin' style={{textDecoration:'none', color:'skyblue'}}> {tier.buttonText}</Link>
+                  <span  style={{textDecoration:'none', color:'skyblue'}}>GÖRÜNTÜLE</span>
                   </Button>
                 </CardActions>
               </Card>
@@ -173,6 +195,9 @@ function PricingContent() {
       </Container>
       {/* End footer */}
       </div>
+      {
+        visible && <DiyetCard visible={visible} setVisible={setVisible} diyet={selected} />
+      }
     </React.Fragment>
   );
 }

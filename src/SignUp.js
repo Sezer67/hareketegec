@@ -1,5 +1,5 @@
 import { FormControlLabel, RadioGroup, TextField , Radio  } from "@mui/material";
-import { axiosInstance, setApiToken } from "./axios.util";
+import { axiosInstance, setApiToken } from "./login.axios.util";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import * as storage from "./storage.helper";
@@ -52,7 +52,7 @@ function SignUp() {
       setApiToken(data.token);
       storage.setKeyWithValue("token", data.token); //Localstorge de tokenı tutmaya yarar.
       alertify.success("Kayıt Başarılı");
-      history.push("/Emailverified");
+      history.push("/EmailVerifyInfo");
     } catch (error) {
       alertify.error(error.response.data.message);
     }

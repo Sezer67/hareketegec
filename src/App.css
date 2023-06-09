@@ -3,6 +3,218 @@
     padding: 0;
     box-sizing:border-box;
 }
+/*HOME*/
+.Home{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+.HomeRightTest{
+flex-basis: 50%;
+background:url("https://c1.wallpaperflare.com/preview/181/945/154/belly-body-calories-diet.jpg");
+background-repeat: no-repeat;
+background-position:center;
+background-size: cover;
+align-items: center;
+display: flex;
+justify-content: space-evenly;
+
+}
+.HomeLeftTest{
+    flex-basis: 50%;
+    background:url("https://c1.wallpaperflare.com/preview/399/80/18/scale-weight-loss-fitness-dieting.jpg") ;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: cover;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+.HomeRightTest button {
+    align-items: center;
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.HomeRightTest button:hover{
+    transition: 0.5s;
+    box-shadow:10px 10px rgb(97, 97, 201);
+}
+.HomeLeftTest button {
+    align-items: center;
+    margin: 25px;
+    width: 200px;
+    height: 50px;
+    border: none;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.HomeLeftTest button:hover{
+    transition: 0.5s;
+    box-shadow: 10px 10px rgb(97, 97, 201);
+}
+/* HOME TEST MODAL */
+
+.TestModal{
+display:flex;
+flex-direction: row-reverse;
+justify-content: space-around;
+position: center;
+align-items: center;
+overflow: visible;
+justify-content: space-between;
+background-color: blue;
+}
+
+.TestModalContext {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    overflow: visible;
+    align-items: center;
+    margin-right:50px ;
+    margin: auto;
+    }
+    
+    .TestModalHeader{
+        background-color: #fefefe;
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        border: 1px solid #888;
+        border: none;
+        align-items: center;
+        
+    }
+    .TestModalBody{
+        flex-direction: column;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        position: center;
+        
+    }
+    .TestModalIcon{ 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .TestModalIcon button{ 
+       width: 150px;
+       height: 50px;
+       color:rgb(97, 97, 201) ;
+       border: none;
+       background-color: #fefefe;
+       text-align: center;
+       cursor: pointer;
+        
+    }
+    .TestModalIconMale{
+        justify-content: space-evenly;
+        align-items: center;
+        margin-right: 30px;
+        
+    }
+    .IconMale{
+        font-size: 150px !important;
+    }
+    .TestModalIcon button:focus {
+        color: red !important;    
+    }
+    .TestModalIcon button:indeterminate{
+        color: red !important;
+    }
+    .IconFemale{
+        font-size: 150px !important;
+    }
+    .TestModalIconFemale{
+        margin-left: 30px;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .TestModalBody div{
+        margin: 10px;
+    }
+    .GenderCheckbox{
+        display: flex;
+        justify-content:space-around; 
+    }
+    .GenderCheckbox #radio-buttons-group {
+        display: flex;
+        justify-content:space-around; 
+    }
+    .TestModalHeaderTitle{
+        margin-right: 10px;
+        
+        
+    }
+    .TestModalHeaderTitle p {
+        margin-top: 2px;
+        color: rgb(97, 97, 201);
+        font-size: 20px;
+        font-weight: bolder;
+        
+    }
+    
+    .TestModalClose {
+        align-items: center;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color:rgb(97, 97, 201);
+        color: white;
+        font-size:20px;
+        width: 80px;
+        
+    }
+    
+    .TestModalClose:hover,
+    .TestModalClose:focus {
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .TestModalBody{
+        display: flex;
+        justify-content: space-between;
+        
+    }
+    .TestModalFooter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .TestModalFooter button {
+        align-items: center;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color:rgb(97, 97, 201);
+        color: white;
+        font-size:20px;
+        width: 80px;
+        
+    }
+
+
+
+
+
 
 /* NAVBAR */
 .NavbarDiv {
@@ -138,12 +350,228 @@
     font-size:20px;
     width: 200px;
 }
+/*API KAÇ KALORİ*/
+.CalorieImage{
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images.unsplash.com/photo-1543353071-10c8ba85a904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80");
+    background-repeat: no-repeat;
+    background-size: 100%;
 
+}
+.CalorieBody{
+width: 500px;
+height: 500px;
+flex-direction: column;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: auto;
 
+}
+.CalorieTitle{
+    font-size: larger;
+    font-weight: bolder;
+    color: rgb(97, 97, 201);
+    padding-bottom: 50px;
+    text-align: center;
+    
+}
+.CalorieSearchBar #demo-helper-text-aligned {
+    width: 80vh;
+}
+.NutritionResults{
+flex-direction: column;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.NutritionResultsTable{
 
+align-items: center;
+text-align: center;
+}
 
+table {
+align-items: center;
+  width: 100%;
+}
 
+td, th {
+  border: 1px solid rgb(97, 97, 201);
+  text-align: center;
+  padding: 8px;
+}
 
+tr:nth-child(even) {
+  background-color:rgb(97, 97, 201);
+}
+.NutritionResults button {
+    align-items: center;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 100px;
+}
+/*MODAL SPOR (AÇILIR PENÇERE) */
 
+.SporModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #888;
+}
 
+.SporModalContext {
+height: 850px;
+width: 1300px;
+margin-bottom:150px ;
+top: 80px;
+background-color: white;
+position: fixed;
+overflow: scroll;
 
+}
+
+.SporModalHeader{
+    background-color: #fefefe;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #888;
+    border: none;
+    
+
+}
+
+.SporModalHeaderTitle{
+    margin-right: 10px;
+    
+    
+}
+.SporModalHeaderTitle p {
+    margin-top: 2px;
+    color: rgb(97, 97, 201);
+    font-size: 20px;
+    font-weight: bolder;
+    
+}
+
+.SporModalClose {
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 80px;
+    
+}
+
+.SporModalClose:hover,
+.SporModalClose:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.SporModalBody{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.SporModelBodyLeft{
+flex-basis:30% ;
+background-color: red;
+margin-left: 10px;
+}
+
+.SporModelBodyRight{
+    flex-basis: 65%;
+    background-color: yellow;
+    margin-right: 10px;
+
+}
+/*MODAL DiYET(AÇILIR PENÇERE) */
+
+.DiyetModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #888;
+}
+
+.DiyetModalContext {
+height: 850px;
+width: 1300px;
+margin-bottom:150px ;
+top: 80px;
+background-color: white;
+position: fixed;
+overflow: scroll;
+
+}
+
+.DiyetModalHeader{
+    background-color: #fefefe;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #888;
+    border: none;
+    
+
+}
+
+.DiyetModalHeaderTitle{
+    margin-right: 10px;
+    
+    
+}
+.DiyetModalHeaderTitle p {
+    margin-top: 2px;
+    color: rgb(97, 97, 201);
+    font-size: 20px;
+    font-weight: bolder;
+    
+}
+
+.DiyetModalClose {
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(97, 97, 201);
+    color: white;
+    font-size:20px;
+    width: 80px;
+    
+}
+
+.DiyetModalClose:hover,
+.DiyetModalClose:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.DiyetModalBody{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.DiyetModelBodyLeft{
+flex-basis:30% ;
+background-color: red;
+margin-left: 10px;
+}
+
+.DiyetModelBodyRight{
+    flex-basis: 65%;
+    background-color: yellow;
+    margin-right: 10px;
+}

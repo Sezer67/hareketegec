@@ -8,19 +8,17 @@ import { Link } from "react-router-dom";
 import Footer from './Footer';
 const images = [
   {
+    id:1,
     url: "https://c1.wallpaperflare.com/preview/181/945/154/belly-body-calories-diet.jpg",
     title: "Yağ Oranı Testi",
-    width: "33%",
+    width: "50%",
   },
+  
   {
-    url: "https://i2.milimaj.com/i/milliyet/75/1200x675/5ffadbb15542811b2875a2c7.jpg",
-    title: "Kalp Yetersizliği Testi",
-    width: "33%",
-  },
-  {
+    id:2,
     url: "https://c1.wallpaperflare.com/preview/399/80/18/scale-weight-loss-fitness-dieting.jpg",
     title: "Vücut Kütle İndeksi Testi",
-    width: "33%",
+    width: "50%",
   },
 ];
 
@@ -105,7 +103,7 @@ export default function ButtonBases() {
           <ImageBackdrop className="MuiImageBackdrop-root" />
           <Image>
             <Button>
-              <Link to='Signin' variant='body2' style={{textDecoration:'none'}}>
+              <Link to="/SignIn" variant='body2' style={{textDecoration:'none'}}>
                 <Typography
                   component="span"
                   variant="subtitle1"
@@ -117,11 +115,11 @@ export default function ButtonBases() {
                     color:'white',
                   }}
                 >
-                  {image.title}
+                 {image.title}
                   <ImageMarked className="MuiImageMarked-root" />
                 </Typography>
               </Link>
-            </Button>
+            </Button> 
           </Image>
         </ImageButton>
       ))}
