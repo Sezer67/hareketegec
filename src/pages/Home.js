@@ -1,8 +1,7 @@
 import * as React from "react";
-import Test from "./Test";
-import Test2 from "./Test2";
-import { useState,useEffect } from "react";
-
+import { useState } from "react";
+import VkiModal from "../components/VkiModal";
+import FatRateModal from "../components/FatRateModal";
 
 const test = [
     {
@@ -15,7 +14,7 @@ const test = [
     },
 ];
 
-function Deneme() {
+function Home() {
     
     const [visibleYag, setVisibleYag] = useState(false); // modalın görünülebilirliği
     const [visibleVki, setVisibleVki] = useState(false); // modalın görünülebilirliği
@@ -23,16 +22,14 @@ function Deneme() {
 
 
     const handleClickYag = () => {
-    setVisibleYag(true);
+        setVisibleYag(true);
     }
 
     const handleClickVki = () => {
-    setVisibleVki(true);
+        setVisibleVki(true);
     }
     return ( 
         <div className="Home">
-            
-
             <div className="HomeRightTest">
             <button onClick={() => handleClickYag(test.id)}>Yağ Oranı Testi</button>
             </div>
@@ -40,15 +37,15 @@ function Deneme() {
             <button onClick={() => handleClickVki(test.id)}>Vücut Kitle İndeksi</button>
             </div>
            { 
-                visibleYag &&   <Test visibleYag={visibleYag} setVisibleYag={setVisibleYag} />
+                visibleYag &&   <FatRateModal visible={visibleYag} setVisible={setVisibleYag} />
            }
            { 
-                visibleVki &&   <Test2 visibleVki={visibleVki} setVisibleVki={setVisibleVki}/>
+                visibleVki &&   <VkiModal visible={visibleVki} setVisible={setVisibleVki}/>
            }
         </div>
         
     );
 }
 
-export default Deneme;
+export default Home;
 

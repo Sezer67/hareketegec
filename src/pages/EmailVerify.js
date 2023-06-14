@@ -1,14 +1,11 @@
-import { axiosInstance, setApiToken } from "./login.axios.util";
+import { axiosInstance, setApiToken } from "../login.axios.util";
 import { useHistory, useLocation } from "react-router-dom";
-import * as storage from "./storage.helper";
+import * as storage from "../storage.helper";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { userActions } from "./redux/slice/userslice";
 
 function EmailVerify() {
   const location = useLocation();
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const emailDeneme = async () => {
     try {

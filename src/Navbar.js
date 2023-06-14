@@ -31,13 +31,10 @@ function Navbar() {
     history.push("/Diyet");
   };
   const blog = () => {
-    history.push("/Blog");
+    history.push("/KcalCalculator");
   };
   const NavbarIconButton = () =>{
     history.push("/");
-  }
-  const deneme = () =>{
-    history.push("/Deneme");
   }
   return (
     <div className="NavbarDiv">
@@ -48,11 +45,11 @@ function Navbar() {
       </div>
 
       <div className="NavbarList">
-        <button className="NavbarListButton" onClick={iletisim}>İLETİŞİM</button>
         <button className="NavbarListButton" onClick={spor}>SPOR</button>
         <button className="NavbarListButton" onClick={diyet}>DİYET</button>
-        <button className="NavbarListButton" onClick={blog}>BLOG</button>
-        <button className="NavbarListButton" onClick={deneme}>DENEME</button>
+        <button className="NavbarListButton" onClick={blog}>KALORİ HESAPLAYICI</button>
+        <button className="NavbarListButton" onClick={iletisim}>İLETİŞİM</button>
+        <button className="NavbarListButton" onClick={() => history.push("/Profile")}>PROFİLİM</button>
       </div>
 
       <div className="NavbarSign">

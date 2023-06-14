@@ -2,13 +2,22 @@
     margin: 0;
     padding: 0;
     box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /*HOME*/
 .Home{
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 80px);
     display: flex;
     justify-content: space-between;
+}
+.profile{
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 .HomeRightTest{
 flex-basis: 50%;
@@ -574,4 +583,130 @@ margin-left: 10px;
     flex-basis: 65%;
     background-color: yellow;
     margin-right: 10px;
+}
+
+.modalHeader {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgb(97, 97, 201);
+    
+}
+.modalFooter {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.footerButton {
+    width: 50%;
+    border: 0;
+    cursor: pointer;
+    height: 40px;
+}
+.footerButton:hover {
+  font-size: 14px;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+
+}
+.modalContent {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% - 40px);
+}
+.sliderContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.sliderText {
+    font-size: 16px;
+    font-weight: 600;
+}
+.closeButton {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 5px;
+}
+.closeButton:hover {
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.resultCard{
+    width: 100%;
+    border: 1px solid rgb(97, 97, 201);
+    border-radius: 4px;
+}
+
+.cardRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.cardRow > p {
+    width: 50%;
+    padding: 10px;
+    border-bottom: 1px solid rgb(97, 97, 201);
+}
+
+.cardRow:nth-last-child(1) > p {
+    border-bottom: 0;
+}
+
+.cardRow > p:nth-child(1){
+    border-right: 1px solid rgb(97, 97, 201);
+}
+#info > div {
+    margin-bottom: 20px;
+}
+
+.rightButton {
+    float: right;
+    border: 0;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: rgb(97, 97, 201);
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.tableCell {
+    border: 0 !important;
+    border-right: 1px solid #ccc !important;
+}
+.listNumber {
+    font-size: 16px;
+    font-weight: 600;
+}
+.howDidButton {
+    border: 0;
+    background-color: transparent;
+    width: 120px;
+    height: 30px;
+    transition: all .3s ease;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.howDidButton:hover {
+    background-color: rgba(222, 222, 222, 0.3);
+}
+.dayList > .row:last-child {
+    border-bottom: 0 !important;
 }

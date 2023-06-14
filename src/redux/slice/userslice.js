@@ -38,6 +38,9 @@ reducers:{
         state.isAuth=false;
         state.token="";
         
+    },
+    setUser: (state, action) => {
+        state.user = {...action.payload};
     }
     
 }

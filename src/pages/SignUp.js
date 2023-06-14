@@ -1,10 +1,10 @@
 import { FormControlLabel, RadioGroup, TextField , Radio  } from "@mui/material";
-import { axiosInstance, setApiToken } from "./login.axios.util";
+import { axiosInstance, setApiToken } from "../login.axios.util";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import * as storage from "./storage.helper";
+import * as storage from "../storage.helper";
 import { useDispatch } from "react-redux";
-import { userActions } from "./redux/slice/userslice";
+import { userActions } from "../redux/slice/userslice";
 import alertify from "alertifyjs";
 
 function SignUp() {

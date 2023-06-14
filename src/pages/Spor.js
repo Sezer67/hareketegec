@@ -11,120 +11,63 @@ import Typography from '@mui/material/Typography';
 import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import { useEffect,useState } from 'react';
-import { axiosInstance } from './login.axios.util';
-import DiyetCard from './DiyetCard';
-
-const tiers = [
-  {
-        id:1,
-        title: 'Diyet 1',
-        description: [
-            'Yağ Oranı %0-6 arası'
-        ],
-        buttonText: 'Tıkla',
-        buttonVariant: 'outlined',
-    },
-  {
-    id:2,
-    title: 'Diyet 2',
-    description: [
-        'Yağ Oranı %6-13 arası'
-    ],
-    buttonText: 'Tıkla',
-    buttonVariant: 'outlined',
-  },
-  {
-    id:3,
-    title: 'Diyet 3',
-    description: [
-        'Yağ Oranı %14-17 arası'
-    ],
-    buttonText: 'Tıkla',
-    buttonVariant: 'outlined',
-  },
-  {
-    id:4,
-    title: 'Diyet 4',
-    description: [
-        'Yağ Oranı %18-24 arası'
-    ],
-    buttonText: 'Tıkla',
-    buttonVariant: 'outlined',
-  },
-  {
-    id:5,
-    title: 'Diyet 5',
-    description: [
-        'Yağ Oranı %25-37 arası'
-    ],
-    buttonText: 'Tıkla',
-    buttonVariant: 'outlined',
-  },
-  {
-    id:6,
-    title: 'Diyet 6',
-    description: [
-        'Yağ Oranı %38 ve üstü arası'
-    ],
-    buttonText: 'Tıkla',
-    buttonVariant: 'outlined',
-  },
- 
-];
-
-
+import { axiosInstance } from "../login.axios.util";
+import ProgramModal from '../components/ProgramModal';
 
 function PricingContent() {
+  const [sporList,setSporList] = useState([]); // tüm kartlaraın listesini tutmak için
+  const [selected, setSelected] = useState(); // sadece seçili olan kartı tutmak için
+  const [visible, setVisible] = useState(false); // modalın görünülebilirliği
 
-  const [diyetList,setDiyetList]=useState([]);//Tüm Kartların listesini tutmak için
-  const [selected ,setSelected]=React.useState();//Seçili kartı tutmak için
-  const [visible,setVisible]=useState(false);//modalın görünebilirliği
-
-  const getDiyetList = async()=>{
+  const getSporList = async () => {
     try {
-      const {data} = await axiosInstance.get(`/diet-list`);
-      setDiyetList(data);
+        const {data} = await axiosInstance.get(`/spor-list`);
+        setSporList(data); 
     } catch (error) {
-      console.log("error",error);
+        console.log("error",error);
     }
   }
 
-  useEffect(()=>{
-    getDiyetList();
+  useEffect(() => {
+    getSporList();
   },[])
 
   const handleClick= (id) => {
-    const selectedDiyet = diyetList.filter((diyet) => diyet.id === id)[0];
-    setSelected(selectedDiyet);
+    const selectedSpor = sporList.filter((spor) => spor.id === id)[0];
+    setSelected(selectedSpor);
     setVisible(true);
   }
 
+
+
+
   return (
-    <React.Fragment>
-      <div style={{backgroundImage:`url("https://images.unsplash.com/photo-1604480132715-bd70038b74df?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=918&q=80")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover', backgroundPosition: 'center'}}>
+    <div style={{height: 'calc(100vh - 80px)'}}>
+      <div style={{height: 'calc(100vh - 80px)',backgroundImage:`url("https://images.unsplash.com/photo-1574680096145-d05b474e2155?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80")`,backgroundRepeat: 'no-repeat',backgroundSize: 'cover',
+            backgroundPosition: 'center',}}>
       <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
       <CssBaseline />
      
       
       {/* Hero unit */}
-      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }}>
+      <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 8, pb: 6 }} >
         <Typography
           component="h1"
           variant="h2"
           align="center"
-          color="text.primary"
+          color="white"
           gutterBottom
         >
           Harekete Geç
         </Typography>
-        <Typography variant="h5" align="center" color="text.secondary" component="p">
+        <Typography variant="h5" align="center" color="white" component="p">
         Spor, disiplin, azim ve kararlılık gerektiren bir aktivitedir. Her gün veya düzenli aralıklarla yaptığınız spora ayırdığınız zaman ve enerjiyi bulmak için, zaman zaman manevi desteğe ihtiyaç duyabilirsiniz. 
         </Typography>
       </Container>
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">
-          {diyetList.map((tier) => (
+          {sporList.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             <Grid
               item
@@ -164,14 +107,18 @@ function PricingContent() {
                     </Typography>
                   </Box>
                   <ul>
-                  {tier.cardDescription || tier.description}
-                    </ul>                            
+                    {tier.cardDescription || tier.description}
+                  </ul>
                 </CardContent>
+                
                 <CardActions>
                   <Button onClick={() => handleClick(tier.id)} fullWidth variant="outlined">
                     
                   <span  style={{textDecoration:'none', color:'skyblue'}}>GÖRÜNTÜLE</span>
-                  </Button>
+                   </Button>
+
+
+                  
                 </CardActions>
               </Card>
             </Grid>
@@ -179,26 +126,13 @@ function PricingContent() {
         </Grid>
       </Container>
       {/* Footer */}
-      <Container
-        maxWidth="md"
-        component="footer"
-        sx={{
-          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
-          mt: 8,
-          py: [3, 6],
-        }}
-      >
-        <Grid container spacing={4} justifyContent="space-evenly">
-        
-        </Grid>
-       
-      </Container>
+
       {/* End footer */}
       </div>
       {
-        visible && <DiyetCard visible={visible} setVisible={setVisible} diyet={selected} />
+        visible && <ProgramModal visible={visible} setVisible={setVisible} item={selected} />
       }
-    </React.Fragment>
+    </div>
   );
 }
 

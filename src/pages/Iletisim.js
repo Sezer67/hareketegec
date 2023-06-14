@@ -13,6 +13,8 @@ import Checkbox from '@mui/material/Checkbox';
 import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import alertify from 'alertifyjs';
+import { axiosInstance } from '../login.axios.util';
 
 
 
@@ -74,6 +76,21 @@ export default function Iletisim() {
             typeof value === 'string' ? value.split(',') : value,
         );
     };
+
+    const handleSend = async() => {
+        try {
+            const {data} = await axiosInstance.post('/user/contact', {
+                fullName: name.concat(" ",surname),
+                email: mail,
+                phone: telefon,
+                description: mesaj,
+                subject: personName.join(" "),
+            });
+            alertify.success("Mesajınız Alındı.")
+        } catch (error) {
+            alertify.error(error.response.data.message);
+        }
+    }
 
     return (
         <Container component="main" sx={{ mt: 10, mb: 30, mr: 4 }} maxWidth="lg">
@@ -178,7 +195,7 @@ export default function Iletisim() {
             </Box>
 
             <Stack direction="row" spacing={2}>
-                <Button variant="contained" color='warning' type='submit' endIcon={<SendIcon />} sx={{ width: '250px', backgroundColor: 'rgb(0, 0, 255)', color: 'white', mt: 5, ml: 1 }}>
+                <Button onClick={handleSend} variant="contained" color='warning' type='submit' endIcon={<SendIcon />} sx={{ width: '250px', backgroundColor: 'rgb(0, 0, 255)', color: 'white', mt: 5, ml: 1 }}>
                     Gönder
                 </Button>
             </Stack>
